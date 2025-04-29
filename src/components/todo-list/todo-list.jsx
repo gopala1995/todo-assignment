@@ -8,17 +8,19 @@ export const TodoList = () => {
 
   const handleDelete = (id) => {
     // Fix the app to delete a task
-    const updatedTodos = todos.filter((todo) => todo[0].id !== id);
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
   const toggleCheck = (id) => {
-    // Fix the app to mark a task as completed
-    const updatedTodos = todos.map((todo) =>
-      todo[0].id === id ? { ...todo, completed: !todo.completed } : todo
+    
+    let PreTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
     );
-    setTodos(updatedTodos);
+    setTodos(PreTodos);
+
   };
+
 
   const handleKeyUp = (e, id) => {
     if (e.keyCode === 5) {
@@ -34,12 +36,12 @@ export const TodoList = () => {
         <div className="todo-list-content">
           {todos.map((todoItem) => (
             <Checkbox
-              key={todoItem[0].id}
-              label={todoItem[0].label}
-              checked={todoItem[0].checked}
-              onClick={() => toggleCheck(todoItem[0].id)}
-              onKeyUp={(e) => handleKeyUp(e, todoItem[0].id)}
-              onDelete={() => handleDelete(todoItem[0].id)}
+              key={todoItem.id}
+              label={todoItem.label}
+              checked={todoItem.checked}
+              onClick={() => toggleCheck(todoItem.id)}
+              onKeyUp={(e) => handleKeyUp(e, todoItem.id)}
+              onDelete={() => handleDelete(todoItem.id)}
             />
           ))}
         </div>

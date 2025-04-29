@@ -5,19 +5,18 @@ import "./todo-form.scss";
 export const TodoForm = () => {
   const { todos, setTodos } = React.useContext(TodosContext);
   const [task, setTask] = React.useState("");
-console.log(task);
+  console.log(task);
 
   const handleAddTodo = () => {
     // Fix the app to display list of all tasks
-    if (task.trim()) {
-      const newTodo = [
-        {
-          id: Date.now(),
-          label: task,
-          checked: false,
-        },
-      ];
-      setTodos([...todos, newTodo]);
+    if (task.trim() !== "") {
+      const newTodo = {
+        id: Date.now(),
+        label: task.trim(),
+        checked: false,
+      };
+
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
       setTask("");
     }
   };
