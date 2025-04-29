@@ -25,4 +25,28 @@
     font-size: 14px;
     color: gray;
   }
+
+  .pagination {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #ddd;
+      cursor: pointer;
+  
+      &.active {
+        background-color: #555;
+        color: white;
+      }
+  
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
   
